@@ -1,0 +1,28 @@
+.head-title{
+    
+}
+
+.label{
+
+}
+
+.button{
+    margin-top: 10px;
+    background-color: white;
+    border: 1px solid black;
+}
+.button:hover{
+    background-color: aliceblue;
+}
+
+.textInput{
+    height: 20px;
+    border-radius: 5px;
+    border-width: 1px;
+}
+
+
+.form{
+    display: grid;
+    grid-column: 2;
+}

@@ -18,14 +18,13 @@ export async function POST(req){
           'title': title,
           'content': content
         }
-        if(doc.title == null || content == null){
+        if(doc.title.trim() == '' || content.trim() == ''){
             throw new Error('Parameter is not fully saticified');
         }
         const result = await postCollection.insertOne(doc);
         console.log(result);
       
     }catch( e){
-        alert(e);
         console.log(e);
     } 
       
@@ -38,5 +37,27 @@ export async function POST(req){
 }
 
 export async function GET(req){
+    const db = (await connectDB).db('forum');
 
+    const postCollection = db.collection("post");
+    const data= await postCollection.find({}).toArray();
+    return NextResponse.json(data);
+}
+
+export async function PUT(req){
+    const db = (await connectDB).db('forum');
+    const postCollection = db.collection("post");
+
+    const filter = {_id:req.id};
+    const updateDoc = {
+        $set:{
+            title:req.title,
+            content:req.content,
+        }
+    };
+    const result = await postCollection.updateOne(filter,updateDoc);
+
+    console.log(result);
+
+    NextResponse.redirect(`/detail/${req.id}`);
 }

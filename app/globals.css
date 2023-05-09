@@ -18,3 +18,8 @@
   color: grey;
   margin : 5px 0px;
 } 
+
+
+.button-group > *{
+  margin-right: 10px;
+}

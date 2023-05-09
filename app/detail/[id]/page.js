@@ -12,7 +12,9 @@ export default async function Detail(props){
           <h4>상세페이지임</h4>
           <h4>{post?.title}</h4>
           <p>{post?.content}</p>
+          <div className={"button-group"}>
           <LinkButton dest={"/list"} name={"Go to List"}></LinkButton>
+          </div>
         </div>
       )
 }

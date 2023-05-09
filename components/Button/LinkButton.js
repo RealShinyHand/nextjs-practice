@@ -6,7 +6,12 @@ export default function LinkButton(props){
     const router = useRouter();
 
     const destination = props.dest;
-    const name = props.name;
+    let name = props.name;
+
+    if(props.children != null){
+
+        name = props.children;
+    }
 
     const onClickHandler = ()=>{
         router.push(destination);
