@@ -29,7 +29,12 @@ export async function POST(req){
         console.log(e);
     } 
       
-    NextResponse.redirect("/list");
+    return new Response("",{
+        status : 301,
+        headers:{
+            Location: "/list",
+        }
+    })
 }
 
 export async function GET(req){
