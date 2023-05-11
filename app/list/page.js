@@ -1,25 +1,17 @@
 import LinkButton from "@/components/Button/LinkButton";
 import { connectDB } from "@/util/connectDB";
 import Link from "next/link";
+import ListItem from "./ListItem";
 export default async function List() {
     const db = (await connectDB).db('forum');
     const postsList = await db.collection('post').find({}).toArray();
-    console.log(postsList);
+
     return (
         <div className="list-bg">
-            {postsList.map((item, idx) =>
-                <div className="list-item" key={idx}>
-                    <Link prefetch={false} href={`/detail/${item._id}`}>
-                        <h4>{item.title}</h4>
-                    </Link>
-
-                     <p>{item.content}</p>
-                     <LinkButton dest={`/edit/${item._id}`}>
-                        <p>Edit</p>
-                    </LinkButton>
-                   
-                </div>
-            )}
+            {postsList.map((item, idx) => {
+                let post = {...item,_id:item._id.toString()};
+                return <ListItem key={idx} item={post} />
+            })}
         </div>
     )
 }

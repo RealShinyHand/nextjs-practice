@@ -44,20 +44,12 @@ export async function GET(req){
     return NextResponse.json(data);
 }
 
-export async function PUT(req){
-    const db = (await connectDB).db('forum');
-    const postCollection = db.collection("post");
+export async function DELETE(req){
 
-    const filter = {_id:req.id};
-    const updateDoc = {
-        $set:{
-            title:req.title,
-            content:req.content,
-        }
-    };
-    const result = await postCollection.updateOne(filter,updateDoc);
+    const db = (await connectDB).db("forum");
+    const id = "tepm;"
+    let result = await db.collection('post').deleteOne({_id:id});
 
     console.log(result);
-
-    NextResponse.redirect(`/detail/${req.id}`);
+    return NextResponse.json({state:200})
 }

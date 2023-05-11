@@ -1,6 +1,7 @@
 'use client'
 import { useRouter } from "next/navigation";
 import style from "./LinkButton.module.css";
+import Link from "next/link";
 
 export default function LinkButton(props){
     const router = useRouter();
