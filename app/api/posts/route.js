@@ -44,12 +44,3 @@ export async function GET(req){
     return NextResponse.json(data);
 }
 
-export async function DELETE(req){
-
-    const db = (await connectDB).db("forum");
-    const id = "tepm;"
-    let result = await db.collection('post').deleteOne({_id:id});
-
-    console.log(result);
-    return NextResponse.json({state:200})
-}
