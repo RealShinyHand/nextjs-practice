@@ -2,6 +2,7 @@
   background-color: rgb(202, 218, 233);
   display: flex;
   flex-direction: row;
+  min-height: 60px;
 }
 
 .navItem:first-child{
@@ -11,12 +12,20 @@
 .navItem{
   transition-duration: 0.5s;
   font-size: 20px;
-  line-height: 40px;
+  line-height: 60px;
   margin-right: 20px;
   min-width: 40px;
   border-radius: 5px;
 }
-.navItem:hover {
+.navItem > *:hover {
 
   background-color: azure;
+}
+.right{
+  margin-left: auto;
+  margin-right: 0px;
+  
+}
+.right > div{
+  line-height: 50px;
 }
